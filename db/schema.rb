@@ -10,5 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2024_06_01_035435) do
+  create_table "games", charset: "utf8mb4", force: :cascade do |t|
+    t.integer "league", default: 0, null: false
+    t.integer "game_week", null: false
+    t.datetime "kickoff_time", null: false
+    t.string "home_team", null: false
+    t.string "away_team", null: false
+    t.string "highlight_url"
+    t.boolean "is_tweeted", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
 end
