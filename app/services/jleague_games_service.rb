@@ -6,7 +6,7 @@ require 'nokogiri'
 
 class JleagueGamesService < ApplicationService
   # Service Objectが自らの責務を果たすために複数の手順が必要になった場合、手順をトランザクションでラップするとよい
-  def call(game_week)
+  def call
     tmp_file = get_webpage_html
     collect_game_attributes(tmp_file)
   end
