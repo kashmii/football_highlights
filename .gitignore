@@ -34,3 +34,8 @@
 !/app/assets/builds/.keep
 
 /node_modules
+
+# 以上はデフォルトで設定されている内容
+.env
+freq_commands.txt
+.vscode/settings.json
