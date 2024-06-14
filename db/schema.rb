@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_06_01_035435) do
     t.boolean "is_tweeted", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["league", "game_week", "home_team"], name: "index_games_on_league_and_game_week_and_home_team", unique: true
   end
 
 end

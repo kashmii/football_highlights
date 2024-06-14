@@ -11,5 +11,7 @@ class CreateGames < ActiveRecord::Migration[7.0]
 
       t.timestamps
     end
+
+    add_index :games, [:league, :game_week, :home_team], unique: true
   end
 end
