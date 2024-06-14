@@ -60,4 +60,8 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # 次のように書けるようになる
+  # user = FactoryBot.create(:user) => user = crete(:user)
+  config.include FactoryBot::Syntax::Methods
 end

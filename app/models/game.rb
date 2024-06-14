@@ -6,4 +6,6 @@ class Game < ApplicationRecord
   serie_a: 3,
   la_liga: 4
 }
+
+validates :home_team, uniqueness: { scope: [:league, :game_week], message: "combination with league and game_week must be unique" }
 end
