@@ -8,7 +8,8 @@ class JleagueGamesService < ApplicationService
   # Service Objectが自らの責務を果たすために複数の手順が必要になった場合、手順をトランザクションでラップするとよい
   def call
     tmp_file = get_webpage_html
-    collect_game_attributes(tmp_file)
+    game_attrs = collect_game_attributes(tmp_file)
+    save_games(game_attrs)
   end
 
   private
@@ -79,7 +80,7 @@ class JleagueGamesService < ApplicationService
       end
 
       # 本番は puts 除去
-      puts game_attrs
+      game_attrs
     end
 
     def parse_html_from_file(file)
@@ -115,6 +116,19 @@ class JleagueGamesService < ApplicationService
     # collect_game_attributes 関連ここまで
     # ===========================
 
+    def save_games(game_attrs)
+      # attrs をループしてGameを作成
+      game_attrs.each do |attr|
+        # 作ったGameを保存
+        Game.create!(
+          league: 0,
+          game_week: attr[0],
+          kickoff_time: attr[1],
+          home_team: attr[2],
+          away_team: attr[3],
+        )
+      end
+    end
 
     # 文字列の日付と時刻をDateTimeオブジェクトに変換
     def parse_datetime(date_part, time_part)
